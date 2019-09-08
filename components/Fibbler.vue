@@ -20,6 +20,7 @@
       v-model="instructions"
       multi-line
       top
+      :timeout="2500"
     >
       Tämä on ylläpitokäyttöä varten tarkoitettu järjestelmienkäyttämisjärjestelmä. Kirjoita järjestelmän vaatima tieto numerojärjestyksessä numerosta 1 lähtien. Järjestelmä vaatii tietoa numeroon 3 asti.
     </v-snackbar>
@@ -40,6 +41,7 @@ export default {
       meth: null,
       savedItems: '',
       showMessage: false,
+      instructions: false,
       oneDone: false,
       twoDone: false,
       threeDone: false
@@ -47,6 +49,12 @@ export default {
   },
   methods: {
     save: function() {
+      if (Math.random(1) < 0.2) {
+        alert(`Laiton yritys käyttää järjestelmätoimintoa sallimattomassa 
+tilassa!`)
+        return
+      }
+
       if (this.meth !== '1' && this.meth !== '2' && this.meth !== '3') {
         alert('Numerojärjestys on väärä')
         return
