@@ -26,7 +26,7 @@ export default {
   data: function() {
     return {
       meth: null,
-      savedItems: null,
+      savedItems: '',
       showMessage: false,
       oneDone: false,
       twoDone: false,
@@ -67,6 +67,9 @@ export default {
     },
     list: function() {
       this.savedItems = localStorage.getItem('meth')
+      if (this.savedItems === '"3"') {
+        this.savedItems = this.savedItems + '\nJärjestelmä on tyytyväinen'
+      }
       this.showMessage = true
     }
   }
