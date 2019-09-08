@@ -12,6 +12,18 @@
       Tabuloi local storagen sisältö 
     </v-btn>
 
+    <v-btn @click="instructions = true">
+      Ohje
+    </v-btn>
+
+    <v-snackbar
+      v-model="instructions"
+      multi-line
+      top
+    >
+      Tämä on ylläpitokäyttöä varten tarkoitettu järjestelmienkäyttämisjärjestelmä. Kirjoita järjestelmän vaatima tieto numerojärjestyksessä numerosta 1 lähtien. Järjestelmä vaatii tietoa numeroon 3 asti.
+    </v-snackbar>
+
     <v-snackbar
       v-model="showMessage"
       top
