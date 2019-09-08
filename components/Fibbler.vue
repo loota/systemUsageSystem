@@ -3,7 +3,7 @@
     <v-text-field
       v-model="meth"
       full-width
-      label="Kirjoita järjestelmän vaatima tieto numerojärjestyksessä numerosta 1 lähtien"
+      label="Kirjoita järjestelmän vaatima tieto numerojärjestyksessä numerosta 1 lähtien. Järjestelmä vaatii tietoa numeroon 3 asti."
     />
     <v-btn @click="save">
       Luo persistentti entiteetti lomaketiedon pohjalta
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     save: function() {
-      if (this.meth !== '1' && this.meth !== '2') {
+      if (this.meth !== '1' && this.meth !== '2' && this.meth !== '3') {
         alert('Numerojärjestys on väärä')
         return
       }
@@ -47,7 +47,14 @@ export default {
         }
       }
 
-      if (Math.random(1) < 0.5) {
+      if (this.meth === '3') {
+        if (!this.twoDone) {
+          alert('Numerojärjestys on väärä')
+          return
+        }
+      }
+
+      if (Math.random(1) < 0.3) {
         localStorage.setItem('meth', JSON.stringify(this.meth))
         if (this.meth === '1') {
           this.oneDone = true
